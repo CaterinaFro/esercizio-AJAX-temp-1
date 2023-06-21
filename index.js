@@ -2,7 +2,7 @@
 import './style.css';
 
 const apiKey = 'd0475be3a1967b1b49dfc02c8128001a';
-const leCitta = ['Genova', 'Milano', 'Torino', 'Roma'];
+const leCitta = ['Genova', 'Milano', 'Torino', 'Roma', "Firenze", "Tokyo", "Pisa", "San Giovanni Valdarno", "Sapporo", "Helsinki", "Oslo"];
 const URL =
   'https://api.openweathermap.org/data/2.5/weather?APPID=' +
   apiKey +
@@ -17,6 +17,21 @@ leCitta.map((citta) => {
   item.appendChild(btn);
   document.getElementById('citta').appendChild(item);
 });
+
+
+var x = document.createElement("INPUT");
+x.setAttribute("type", "text");
+x.setAttribute("value", " ");
+document.body.appendChild(x);
+
+
+const dinbtn= document.createElement('button');
+dinbtn.innerHTML = "aggiungi"
+dinbtn.addEventListener('click', () => (document.createElement('button')));
+//dinbtn.innerHTML = x.value;
+
+
+
 function display(c) {
   const request = new XMLHttpRequest(); // Costruzione dell’oggetto "request"
   // Funzione callback invocata quando la request termina
@@ -30,7 +45,9 @@ function display(c) {
         c +
         ' ci sono ' +
         dataObject.main.temp +
-        ' gradi';
+        ' gradi, ' +
+        dataObject.main.pressure +
+        ' di pressione';
     } else {
       document.getElementById('risposta').innerText = 'Errore';
     }
@@ -41,4 +58,6 @@ function display(c) {
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
   }
+  
+
   

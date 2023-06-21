@@ -22,13 +22,25 @@ leCitta.map((citta) => {
 var x = document.createElement("INPUT");
 x.setAttribute("type", "text");
 x.setAttribute("value", " ");
-document.body.appendChild(x);
+document.getElementById('row').appendChild(x);
+
+function dinamico(v) {
+  const dinamic = document.createElement('button');
+  dinamic.innerHTML = v;
+  dinamic.addEventListener('click', () => display(dinamic.innerHTML));
+  const container = document.createElement('li');
+  container.appendChild(dinamic);
+  document.getElementById('citta').appendChild(container);
+
+}
 
 
-const dinbtn= document.createElement('button');
-dinbtn.innerHTML = "aggiungi"
-dinbtn.addEventListener('click', () => (document.createElement('button')));
-//dinbtn.innerHTML = x.value;
+let dinbtn = document.createElement('button');
+dinbtn.innerHTML = "aggiungi";
+dinbtn.addEventListener('click', () => dinamico(x.value))
+document.getElementById('din').appendChild(dinbtn);
+
+
 
 
 
@@ -58,6 +70,3 @@ function display(c) {
   request.send();
   console.log(new Date().toISOString() + ': Finito:');
   }
-  
-
-  
